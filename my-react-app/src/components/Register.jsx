@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import user from "../imagenes/user.jpg";
+import { AuthContext } from '../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
-export function Register(props) {
+
+export function Register() {
   const [cedula, setCedula] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const[name, setName] = useState("");
+  const { isAuthenticated } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("cedula", cedula);
     console.log("password", password);
+    console.log('entro en el register:'+isAuthenticated)
   };
 
    return (
@@ -54,7 +60,7 @@ export function Register(props) {
       
       <button>Guardar Datos</button>
     </form>
-    <button className="link-btn" onClick={()=>{props.onFormSwitch('login')}}>Iniciar sesión</button>
+    <button className="link-btn" onClick={()=>{ navigate('/login')}}>Iniciar sesión</button>
     </div>
   );
 }
