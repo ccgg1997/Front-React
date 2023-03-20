@@ -1,43 +1,47 @@
-import { useState } from "react";
+import { useState, useEffect,useContext } from "react";
+import "./App.css";
+
+//componentes
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
-import "./App.css";
-import { AuthProvider } from "./contexts/AuthContext";
-import { Nav } from "./components/Nav";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./components/Home";
 import { Facturacion } from "./components/Facturacion";
+import { Nav } from "./components/Nav";
+
+
+//context
+import { AuthProvider,AuthContext } from "./contexts/AuthContext";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
 function App() {
-  const [currentForm, setCurrentForm] = useState("login");
 
-  const toggleForm = (formName) => {
-    setCurrentForm(formName);
-  };
+  function Layout() {
+    const { isAuthenticated, logout } = useContext(AuthContext);
+    console.log("isAuthenticated linea 20", isAuthenticated);
+  
+    return (
+    
+      <div className="App" style={{ backgroundColor: isAuthenticated ? "white" : "transparent" }}>
+        
+        <Nav className="header" logout={logout} />
+        <div className="aside"></div>
+        <div className="aside2"></div>
+        <div className="main">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/Register" element={<Register />} />
+            <Route path="/Facturacion" element={<Facturacion />} />
+          </Routes>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <AuthProvider>
       <Router>
-        <div className="App">
-          <Nav className="header" />
-          <div className="aside"></div>
-          <div className="aside2"></div>
-          <div className="main">
-            
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/Login" element={<Login  />} />
-              <Route path="/Register" element={<Register />} />
-              <Route path="/Facturacion" element={<Facturacion />} />
-            </Routes>
-          </div>
-          {/*  <Nav  />
-        <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Register" element={<Register/>} />
-        </Routes> */}
-        </div>
+        <Layout />
       </Router>
     </AuthProvider>
   );

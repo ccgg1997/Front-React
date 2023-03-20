@@ -5,26 +5,21 @@
   margin: 0;
 }
 #root {
-  /*  display: grid;
-  row-gap: 10px;
-  column-gap: 10px;
-  /* gap: 10px; 
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: (4, auto);
-  grid-template-areas:
-    "header header header"
-    "main main aside"
-    "widget1 widget2 aside"
-    "footer footer footer"; */
 
-    background-image: linear-gradient(150deg, #ff2c2c55 20%, #6adcf97c 85%);
-    background-color: rgba(218, 218, 218, 0.43);
-    height: 100vh;
+    background-image: linear-gradient(150deg, #ff2c2c55 20%, #6adcf97c 85%);/*  //color de rosa y azul */ 
+   /*  background-image:  url("./imagenes/fondo-login.jpg"); */
     width: 100%;
-  /* background-color: hsla(240, 100%, 58%, 0.697); */
+    height: 100vh;
+
+  /*   background-size: 100% 100%;
+    background-color: rgba(218, 218, 218, 0.43);
+ */
+   
+
 }
 .App {
   display: grid;
+  height: 100vh;
   row-gap: 40px;
   column-gap: 10px;
   /* gap: 10px; */
@@ -40,7 +35,7 @@
 
 .header {
   background-color:none;
-  color: white;
+  
   border: none;
   grid-area: header;
 }
@@ -48,7 +43,7 @@
 .main {
   
   background-color:none;
-  color: white;
+  
   border: none;
   align-items: center;
   justify-content: center;
@@ -57,14 +52,14 @@
 
 .aside {
   background-color:none;
-  color: white;
+  
   border: none;
   grid-area: aside;
 }
 
 .aside2 {
   background-color:none;
-  color: white;
+  
   border: none;
   grid-area: aside2;
 }
@@ -76,6 +71,7 @@ nav {
 
 .auth-form-container,
 .login-form,
+.register-form-container,
 .register-form {
   display: flex;
   flex-direction: column;
@@ -83,8 +79,8 @@ nav {
 
 }
 
-.auth-form-container {
 
+.auth-form-container {
   background-color: white;
   border-radius: 5%;
   box-shadow: 5px 5px;
@@ -97,27 +93,47 @@ nav {
   right: 0;
   margin: auto;
   align-items: center;
-  
-  
 }
+
+.btn-login{
+  margin-top: 5%;
+}
+
 .Login-Register-Button{
   
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  margin:  0 10% 0 15%;
+  margin:  0 15% 0 15%;
 
 
 }
 
-.register-form-container {
-  padding: 5rem;
+.register-form-container{
   background-color: white;
-  border-radius: 1%;
-  box-shadow: 5px 5px;
+  border-radius: 5%;
+  box-shadow: 9px 10px;
   color: black;
+  height: 750px;
+  width: 500px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 15%;
+
+  
 }
+
+.user{
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
 
 label {
   text-align: left;

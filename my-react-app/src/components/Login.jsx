@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import logo from "../imagenes/logo.jpg";
+import logo from "../imagenes/logo.png";
 import { useNavigate } from "react-router-dom";
 
 export function Login(props) {
@@ -12,7 +12,10 @@ export function Login(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    logout(); // llamar a la función de logout al montar el componente
+    async function logoutFunction() {
+      await logout();
+    }
+    logoutFunction(); // llamar a la función de logout al montar el componente
   }, []); // asegurarse de que la función de logout sea una dependencia de useEffect
 
   const handleSubmit = (e) => {
@@ -77,7 +80,7 @@ export function Login(props) {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="*******"
           />
-          <button onClick={handleLogin} disabled={isLoading}>
+          <button className="btn-login" onClick={handleLogin} disabled={isLoading}>
             {isLoading ? "Cargando..." : "Log in"}
           </button>
         </form>

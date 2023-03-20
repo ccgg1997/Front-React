@@ -21,7 +21,7 @@ export function Register() {
 
    return (
     <div className="register-form-container">
-    <form className="login-form" onSubmit={handleSubmit}>
+    <form className="register-form" onSubmit={handleSubmit}>
       
         <div className="user">
           <img className="image" src={user} />

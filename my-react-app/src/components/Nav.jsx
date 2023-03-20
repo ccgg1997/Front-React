@@ -1,16 +1,20 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export function Nav() {
+export function Nav(props) {
   const navigate = useNavigate();
 
-  function handleLogin() {
+  async function handleLogin() {
+    //window.location.reload();
     // ...Lógica para cerrar sesión...
+    await props.logout();
     navigate("/Login");
+    
   }
   function handleHome() {
     // ...Lógica para cerrar sesión...
     navigate("/");
+    
   }
   function handleFacturacion() {
     // ...Lógica para cerrar sesión...
@@ -18,6 +22,7 @@ export function Nav() {
   }
 
   return (
+    <div className="header">
     <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
       <div className="container">
         <a className="navbar-brand" href="#">
@@ -83,5 +88,6 @@ export function Nav() {
         </div>
       </div>
     </nav>
+    </div>
   );
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Nav } from "../components/Nav";  
+
 
 export function Home() {
   const { isAuthenticated } = useContext(AuthContext);
